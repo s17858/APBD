@@ -1,25 +1,28 @@
-﻿namespace APBD;
+﻿using System;
+
+namespace APBD;
 
 public class Program
 {
 
-    public static double ObliczSrednia(int[] tablica)
+    public static int ZnajdzMaxWartosc(int[] tablica)
     {
-        int suma = 0;
+        int maxWartosc = int.MinValue;
         foreach (int liczba in tablica)
         {
-            suma += liczba;
+            if(liczba > maxWartosc)
+			{
+				maxWartosc = liczba;
+			}
         }
-
-        double srednia = (double)suma / tablica.Length;
-        return srednia;
+        return maxWartosc;
     }
 
     public static void Main()
     {
-        int[] tablica = {1, 2, 3, 4, 5 };
+        int[] tablica = {1, 5, 3, 2, 4 };
 
-    double srednia = ObliczSrednia(tablica);
-        Console.WriteLine($"Srednia: {srednia:F2}");
+    int maxWartosc = ZnajdzMaxWartosc(tablica);
+        Console.WriteLine($"Maksymalna wartość: {maxWartosc}");
     }
 }
