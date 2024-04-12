@@ -24,5 +24,6 @@ public class Program
 
     int maxWartosc = ZnajdzMaxWartosc(tablica);
         Console.WriteLine($"Maksymalna wartość: {maxWartosc}");
+		Console.WriteLine("");
     }
 }
