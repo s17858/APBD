@@ -8,11 +8,12 @@ public class Program
     public static int ZnajdzMaxWartosc(int[] tablica)
     {
         int maxWartosc = int.MinValue;
-        foreach (int digit in tablica)
+        foreach (int number in tablica)
         {
-            if(digit > maxWartosc)
+            if(number > maxWartosc)
 			{
-				maxWartosc = digit;
+				maxWartosc = number;
+>>>>>>> feature-new
 			}
         }
         return maxWartosc;
