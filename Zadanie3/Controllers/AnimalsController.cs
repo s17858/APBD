@@ -14,6 +14,15 @@ public class AnimalsController
             new Animal { Name = "Lew", Description = "Król sawanny", Category = "Ssak", Area = "Afryka" },
             new Animal { Name = "Słoń", Description = "Największe lądowe zwierzę", Category = "Ssak", Area = "Afryka, Azja" },
         };
+		
+		// Metoda dodawania nowego zwierzęcia
+        [HttpPost]
+        public ActionResult AddAnimal([FromBody] Animal newAnimal)
+        {
+            animals.Add(newAnimal);
+            return Ok("Nowe zwierzę zostało dodane.");
+        }
+		
 
         [HttpGet]
         public ActionResult<IEnumerable<Animal>> GetAnimals(string orderBy = "name")
