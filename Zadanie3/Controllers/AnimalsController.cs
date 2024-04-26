@@ -41,7 +41,25 @@ public class AnimalsController
 
             return Ok("Dane zwierzęcia zostały zaktualizowane.");
         }
-    }
+    
+		
+		
+		
+		 // Metoda do usuwania danych konkretnego zwierzęcia
+        [HttpDelete("{idAnimal}")]
+        public ActionResult DeleteAnimal(int idAnimal)
+        {
+            var existingAnimal = animals.FirstOrDefault(a => a.IdAnimal == idAnimal);
+            if (existingAnimal == null)
+            {
+                return NotFound("Zwierzę o podanym identyfikatorze nie zostało znalezione.");
+            }
+
+            animals.Remove(existingAnimal);
+
+            return Ok("Dane zwierzęcia zostały usunięte.");
+        }
+		
 		
 
         [HttpGet]
