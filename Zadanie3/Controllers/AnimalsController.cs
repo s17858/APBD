@@ -23,6 +23,26 @@ public class AnimalsController
             return Ok("Nowe zwierzę zostało dodane.");
         }
 		
+		
+		// Metoda do aktualizacji danych konkretnego zwierzęcia
+        [HttpPut("{idAnimal}")]
+        public ActionResult UpdateAnimal(int idAnimal, [FromBody] Animal updatedAnimal)
+        {
+            var existingAnimal = animals.FirstOrDefault(a => a.IdAnimal == idAnimal);
+            if (existingAnimal == null)
+            {
+                return NotFound("Zwierzę o podanym identyfikatorze nie zostało znalezione.");
+            }
+
+            existingAnimal.Name = updatedAnimal.Name;
+            existingAnimal.Description = updatedAnimal.Description;
+            existingAnimal.Category = updatedAnimal.Category;
+            existingAnimal.Area = updatedAnimal.Area;
+
+            return Ok("Dane zwierzęcia zostały zaktualizowane.");
+        }
+    }
+		
 
         [HttpGet]
         public ActionResult<IEnumerable<Animal>> GetAnimals(string orderBy = "name")
